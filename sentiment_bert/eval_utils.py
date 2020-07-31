@@ -1,8 +1,9 @@
 import numpy as np
 import torch
-from bert_data_processor_ja import BERTInputConverter
+from sentiment_bert.bert_data_processor_ja import BERTInputConverter
 
 # Function to calculate the accuracy of our predictions vs labels
+
 def flat_accuracy(preds, labels):
     pred_flat = np.argmax(preds, axis=1).flatten()
     labels_flat = labels.flatten()
@@ -11,7 +12,7 @@ def flat_accuracy(preds, labels):
 
 def evaluate(model, dataloader):
     # check if gpu is available
-    if torch.cuda.is_available:
+    if torch.cuda.is_available():
         device = torch.device("cuda")
     else:
         device = torch.device("cpu")
@@ -63,7 +64,7 @@ def softmax(x):
 
 def evaluate_single_sentence(model, sentence):
     # check if gpu is available
-    if torch.cuda.is_available:
+    if torch.cuda.is_available():
         device = torch.device("cuda")
     else:
         device = torch.device("cpu")

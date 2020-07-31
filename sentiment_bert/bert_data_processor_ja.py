@@ -1,6 +1,6 @@
+import torch
 from torch.utils.data import Dataset
 from transformers import BertTokenizer
-import torch
 from transformers.tokenization_bert_japanese import BertJapaneseTokenizer
 
 # customized class for preparing datasets
@@ -11,7 +11,7 @@ class BERTInputConverter(Dataset):
         self.labels = labels
 
         # Initialize the BERT tokenizer
-        self.tokenizer = BertJapaneseTokenizer.from_pretrained("bert-base-japanese-whole-word-masking")
+        self.tokenizer = BertJapaneseTokenizer.from_pretrained("cl-tohoku/bert-base-japanese-whole-word-masking")
 
         self.maxlen = maxlen
 
@@ -61,3 +61,4 @@ class BERTInputConverter(Dataset):
             return input_ids_tensor, input_mask_tensor, label_tensor
 
         return input_ids_tensor, input_mask_tensor
+
